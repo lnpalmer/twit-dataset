@@ -8,8 +8,6 @@ from TwitterDatasetServer import TwitterDatasetServer
 def strip_newlines(str):
     return str.replace('\n', '').replace('\r', '')
 
-twitter_query = ''
-
 api_file_path = 'api_config.txt'
 api_file = open(api_file_path, 'r')
 api_consumer_key = strip_newlines(api_file.readline())
