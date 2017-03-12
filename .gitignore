@@ -243,8 +243,8 @@ ModelManifest.xml
 
 ##############
 
-# Server data directory
-.server_data/**
+# Default server data directory
+server_data/
 
 # Default Twitter API config file
 api_config.txt
