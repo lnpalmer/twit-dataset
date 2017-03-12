@@ -21,7 +21,7 @@ class TwitterDatasetServer:
             for j in range(10):
                 self.step()
                 iter += 1
-                time.sleep(4)
+                time.sleep(10) # half as fast as Twitter's limit (180 / 15 min. window), keeps activity low since new tweets will appear slowly anyways
             self.save()
             print('iteration ' + str(iter) + ', dataset size: %s train, %s test' % self.dataset.sizes())
     def filter_tweets(self, tweets):
