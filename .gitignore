@@ -248,3 +248,6 @@ server_data/
 
 # Default Twitter API config file
 api_config.txt
+
+# Default Twitter query config file
+query.txt
