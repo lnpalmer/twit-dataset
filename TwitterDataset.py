@@ -2,6 +2,7 @@ import os
 import urllib
 import json
 import copy
+import time
 
 class TwitterDataset:
     def __init__(self, **kwargs):
@@ -22,7 +23,7 @@ class TwitterDataset:
         path_base = self.root_path + '/' + subset + '/' + str(tweet.id)
         media_url = tweet.media[0].media_url
         media_ext = media_url.split('.')[-1]
-        urllib.request.urlretrieve(url=media_url, filename=path_base+'.'+media_ext)
+        self.download_media(media_url, path_base + '.' + media_ext)
         self.tweets[subset][str(tweet.id)] = tweet.AsDict()
     def save(self):
         for subset in ('train', 'test'):
@@ -32,3 +33,11 @@ class TwitterDataset:
             file.close()
     def sizes(self):
         return len(self.tweets['train']), len(self.tweets['test'])
+    def download_media(self, url, file_path):
+        while True:
+            try:
+                urllib.request.urlretrieve(url=url, filename=file_path)
+                return
+            except urllib.error.URLError as err:
+                print('error encountered fetching media! trying again in 60 s...')
+                time.sleep(60) # wait a minute and try again
