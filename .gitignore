@@ -251,6 +251,3 @@ api_config.txt
 
 # Default Twitter query config file
 query.txt
-
-# Python cache
-__pycache__/
